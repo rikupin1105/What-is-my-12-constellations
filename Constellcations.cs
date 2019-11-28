@@ -15,25 +15,25 @@ namespace constellations
         [FunctionName("Function1")]
         public static async System.Threading.Tasks.Task<IActionResult> RunAsync([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequestMessage req, ILogger log)
         {
-            //POST‚³‚ê‚½JSON‚ğString‚É•ÏŠ·
+            //POSTã•ã‚ŒãŸJSONã‚’ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã—ã¦ã€BirthDayã«DateTimeã‚’å…¥ã‚Œã‚‹
             var data = await req.Content.ReadAsAsync<DialogFlowRequest>();
             var Birthday = data.queryResult.parameters.Birthday;
 
-            //ƒVƒŠƒAƒ‰ƒCƒY‚µ‚½‚à‚Ì‚©‚ç’a¶“ú‚ğæ“¾B
+            //ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã—ãŸã‚‚ã®ã‹ã‚‰èª•ç”Ÿæ—¥ã‚’å–å¾—ã€‚
             var seiza = Seizahantei(Birthday);
 
-            //ƒŒƒXƒ|ƒ“ƒXJSON‚ğ¶¬
+            //ãƒ¬ã‚¹ãƒãƒ³ã‚¹JSONã‚’ç”Ÿæˆ
             var ResponceObject = new DialogFlowResponce();
-            ResponceObject.fulfillmentText = "‚ ‚È‚½‚Ì¯À‚Í" + seiza + "‚Å‚·B";
+            ResponceObject.fulfillmentText = "ã‚ãªãŸã®æ˜Ÿåº§ã¯" + seiza + "ã§ã™ã€‚";
             string json = JsonConvert.SerializeObject(ResponceObject);
 
-            //JSON‚ÅƒŠƒ^[ƒ“
+            //JSONã§ãƒªã‚¿ãƒ¼ãƒ³
             var ReturnObject = new ObjectResult(json);
             return ReturnObject;
         }
 
         /// <summary>
-        /// ’a¶“ú‚©‚ç12¯À‚ğ•Ô‚µ‚Ü‚·
+        /// èª•ç”Ÿæ—¥ã‹ã‚‰12æ˜Ÿåº§ã‚’è¿”ã—ã¾ã™
         /// </summary>
         public static string Seizahantei(DateTime Birthday)
         {
@@ -42,55 +42,55 @@ namespace constellations
             switch (Borned_Month)
             {
                 case 1:
-                    if (Borned_Day >= 20) return "‚İ‚¸‚ª‚ßÀ";
-                    if (Borned_Day <= 19) return "‚â‚¬À";
+                    if (Borned_Day >= 20) return "ã¿ãšãŒã‚åº§";
+                    if (Borned_Day <= 19) return "ã‚„ãåº§";
                     break;
                 case 2:
-                    if (Borned_Day >= 19) return "‚¤‚¨À";
-                    if (Borned_Day <= 18) return "‚İ‚¸‚ª‚ßÀ";
+                    if (Borned_Day >= 19) return "ã†ãŠåº§";
+                    if (Borned_Day <= 18) return "ã¿ãšãŒã‚åº§";
                     break;
                 case 3:
-                    if (Borned_Day >= 21) return "‚¨‚Ğ‚Â‚¶À";
-                    if (Borned_Day <= 20) return "‚¤‚¨À";
+                    if (Borned_Day >= 21) return "ãŠã²ã¤ã˜åº§";
+                    if (Borned_Day <= 20) return "ã†ãŠåº§";
                     break;
                 case 4:
-                    if (Borned_Day >= 20) return "‚¨‚¤‚µÀ";
-                    if (Borned_Day <= 19) return "‚¨‚Ğ‚Â‚¶À";
+                    if (Borned_Day >= 20) return "ãŠã†ã—åº§";
+                    if (Borned_Day <= 19) return "ãŠã²ã¤ã˜åº§";
                     break;
                 case 5:
-                    if (Borned_Day >= 21) return "‚Ó‚½‚²À";
-                    if (Borned_Day <= 20) return "‚¨‚¤‚µÀ";
+                    if (Borned_Day >= 21) return "ãµãŸã”åº§";
+                    if (Borned_Day <= 20) return "ãŠã†ã—åº§";
                     break;
                 case 6:
-                    if (Borned_Day >= 22) return "‚©‚ÉÀ";
-                    if (Borned_Day <= 21) return "‚Ó‚½‚²À";
+                    if (Borned_Day >= 22) return "ã‹ã«åº§";
+                    if (Borned_Day <= 21) return "ãµãŸã”åº§";
                     break;
                 case 7:
-                    if (Borned_Day >= 23) return "‚µ‚µÀ";
-                    if (Borned_Day <= 22) return "‚©‚ÉÀ";
+                    if (Borned_Day >= 23) return "ã—ã—åº§";
+                    if (Borned_Day <= 22) return "ã‹ã«åº§";
                     break;
                 case 8:
-                    if (Borned_Day >= 23) return "‚¨‚Æ‚ßÀ";
-                    if (Borned_Day <= 22) return "‚µ‚µÀ";
+                    if (Borned_Day >= 23) return "ãŠã¨ã‚åº§";
+                    if (Borned_Day <= 22) return "ã—ã—åº§";
                     break;
                 case 9:
-                    if (Borned_Day >= 23) return "‚Ä‚ñ‚Ñ‚ñÀ";
-                    if (Borned_Day <= 22) return "‚¨‚Æ‚ßÀ";
+                    if (Borned_Day >= 23) return "ã¦ã‚“ã³ã‚“åº§";
+                    if (Borned_Day <= 22) return "ãŠã¨ã‚åº§";
                     break;
                 case 10:
-                    if (Borned_Day >= 24) return "‚³‚»‚èÀ";
-                    if (Borned_Day <= 23) return "‚Ä‚ñ‚Ñ‚ñÀ";
+                    if (Borned_Day >= 24) return "ã•ãã‚Šåº§";
+                    if (Borned_Day <= 23) return "ã¦ã‚“ã³ã‚“åº§";
                     break;
                 case 11:
-                    if (Borned_Day >= 23) return "‚¢‚ÄÀ";
-                    if (Borned_Day <= 22) return "‚³‚»‚èÀ";
+                    if (Borned_Day >= 23) return "ã„ã¦åº§";
+                    if (Borned_Day <= 22) return "ã•ãã‚Šåº§";
                     break;
                 case 12:
-                    if (Borned_Day >= 22) return "‚â‚¬À";
-                    if (Borned_Day <= 21) return "‚¢‚ÄÀ";
+                    if (Borned_Day >= 22) return "ã‚„ãåº§";
+                    if (Borned_Day <= 21) return "ã„ã¦åº§";
                     break;
             }
-            return "ƒGƒ‰[‚Å‚·";
+            return "ã‚¨ãƒ©ãƒ¼ã§ã™";
         }
 
     }
