@@ -8,11 +8,11 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 
-namespace constellations
+namespace What_is_my_12_constellations
 {
-    public static class Constellcations
+    public static class What_is_my_12_constellations
     {
-        [FunctionName("Function1")]
+        [FunctionName("What-is-my-12-constellations")]
         public static async System.Threading.Tasks.Task<IActionResult> RunAsync([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequestMessage req, ILogger log)
         {
             //POST‚³‚ê‚½JSON‚ðString‚É•ÏŠ·

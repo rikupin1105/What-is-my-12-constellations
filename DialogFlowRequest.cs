@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace constellations
+namespace What_is_my_12_constellations
 {
     public class DialogFlowRequest
     {

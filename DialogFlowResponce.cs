@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace constellations
+namespace What_is_my_12_constellations
 {
     class DialogFlowResponce
     {
