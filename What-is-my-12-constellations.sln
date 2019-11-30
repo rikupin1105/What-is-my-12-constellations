@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "constellations", "constellations.csproj", "{5F6E4AC1-F5A9-4B87-83D4-DF0514863BC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "What-is-my-12-constellcations", "What-is-my-12-constellcations.csproj", "{5F6E4AC1-F5A9-4B87-83D4-DF0514863BC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

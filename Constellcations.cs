@@ -15,21 +15,28 @@ namespace What_is_my_12_constellations
         [FunctionName("What-is-my-12-constellations")]
         public static async System.Threading.Tasks.Task<IActionResult> RunAsync([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequestMessage req, ILogger log)
         {
-            //POSTされたJSONをデシリアライズして、BirthDayにDateTimeを入れる
-            var data = await req.Content.ReadAsAsync<DialogFlowRequest>();
-            var Birthday = data.queryResult.parameters.Birthday;
+            if (req.Method.ToString() == "POST")
+            {
+                //POSTされたJSONをデシリアライズして、BirthDayにDateTimeを入れる
+                var data = await req.Content.ReadAsAsync<DialogFlowRequest>();
+                var Birthday = data.queryResult.parameters.Birthday;
 
-            //シリアライズしたものから誕生日を取得。
-            var seiza = Seizahantei(Birthday);
+                //シリアライズしたものから誕生日を取得。
+                var seiza = Seizahantei(Birthday);
 
-            //レスポンスJSONを生成
-            var ResponceObject = new DialogFlowResponce();
-            ResponceObject.fulfillmentText = "あなたの星座は" + seiza + "です。";
-            string json = JsonConvert.SerializeObject(ResponceObject);
+                //レスポンスJSONを生成
+                var ResponceObject = new DialogFlowResponce();
+                ResponceObject.fulfillmentText = "あなたの星座は" + seiza + "です。";
+                string json = JsonConvert.SerializeObject(ResponceObject);
 
-            //JSONでリターン
-            var ReturnObject = new ObjectResult(json);
-            return ReturnObject;
+                //JSONでリターン
+                var ReturnObject = new ObjectResult(json);
+                return ReturnObject;
+            }
+            else
+            {
+                return new ObjectResult("");
+            }
         }
 
         /// <summary>
